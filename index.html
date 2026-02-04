@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Planilla Económica de Forrajes – Vacas Lecheras</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h2, h3 {
+  margin-top: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input {
+  width: 85px;
+}
+
+.result {
+  background-color: #e9f4ff;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 15px;
+  padding: 8px 14px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Planilla de Evaluación Económica de Forrajes</h2>
+
+<h3>Parámetros generales del sistema</h3>
+
+<table>
+<tr>
+  <td>Producción de leche (L/vaca/día)</td>
+  <td><input id="leche" value="20"></td>
+  <td>Consumo objetivo MS (kg/vaca/día)</td>
+  <td><input id="ms_obj" value="15"></td>
+  <td>Precio ración ($/kg)</td>
+  <td><input id="precio_racion" value="2.6"></td>
+</tr>
+</table>
+
+<h3>Forrajes</h3>
+
+<table id="tabla">
+<tr>
+  <th>Forraje</th>
+  <th>Kg fresco/día</th>
+  <th>% MS</th>
+  <th>$/kg fresco</th>
+  <th>MS kg/ha/año</th>
+  <th>MS consumida (kg)</th>
+  <th>Kg ración</th>
+  <th>Costo dieta ($/día)</th>
+  <th>$/L</th>
+  <th>Vacas/180 días/ha</th>
+</tr>
+</table>
+
+<button onclick="agregarFila()">Agregar forraje</button>
+<button onclick="calcular()">Calcular</button>
+
+<script>
+// ===============================
+// Forrajes base (desde tu plantilla)
+// MS/ha/año expresada en kg
+// ===============================
+const forrajesBase = [
+  { nombre: "Ryegrass", ms: 0.14, ms_ha: 4088 },
+  { nombre: "Ryegrass perenne", ms: 0.14, ms_ha: 6643 },
+  { nombre: "Kikuyo", ms: 0.14, ms_ha: 3000 },
+  { nombre: "Botón de oro", ms: 0.15, ms_ha: 1525 }
+];
+
+// ===============================
+// Cargar forrajes base
+// ===============================
+function cargarForrajesBase() {
+  const tabla = document.getElementById("tabla");
+
+  forrajesBase.forEach(f => {
+    const fila = tabla.insertRow();
+    fila.innerHTML = `
+      <td><input value="${f.nombre}"></td>
+      <td><input value="40"></td>
+      <td><input value="${f.ms * 100}"></td>
+      <td><input value="0.05"></td>
+      <td><input value="${f.ms_ha}"></td>
+      <td class="result"></td>
+      <td class="result"></td>
+      <td class="result"></td>
+      <td class="result"></td>
+      <td class="result"></td>
+    `;
+  });
+}
+
+// ===============================
+// Agregar forraje definido por usuario
+// ===============================
+function agregarFila() {
+  const tabla = document.getElementById("tabla");
+  const fila = tabla.insertRow();
+
+  fila.innerHTML = `
+    <td><input placeholder="Nuevo forraje"></td>
+    <td><input value="40"></td>
+    <td><input value="20"></td>
+    <td><input value="0.05"></td>
+    <td><input value="5000"></td>
+    <td class="result"></td>
+    <td class="result"></td>
+    <td class="result"></td>
+    <td class="result"></td>
+    <td class="result"></td>
+  `;
+}
+
+// ===============================
+// Cálculos principales
+// ===============================
+function calcular() {
+
+  const leche = parseFloat(document.getElementById("leche").value);
+  const ms_obj = parseFloat(document.getElementById("ms_obj").value);
+  const precio_racion = parseFloat(document.getElementById("precio_racion").value);
+
+  const filas = document.querySelectorAll("#tabla tr");
+
+  for (let i = 1; i < filas.length; i++) {
+
+    const inputs = filas[i].querySelectorAll("input");
+    const results = filas[i].querySelectorAll(".result");
+
+    const kg_fresco = parseFloat(inputs[1].value);
+    const ms_pct = parseFloat(inputs[2].value) / 100;
+    const precio_fresco = parseFloat(inputs[3].value);
+    const ms_ha = parseFloat(inputs[4].value);
+
+    // Nivel animal
+    const ms_consumida = kg_fresco * ms_pct;
+    const ms_faltante = Math.max(0, ms_obj - ms_consumida);
+    const costo_vol = kg_fresco * precio_fresco;
+    const costo_racion = ms_faltante * precio_racion;
+    const costo_dieta = costo_vol + costo_racion;
+    const costo_litro = costo_dieta / leche;
+
+    // Nivel forrajero
+    const dias_vaca = ms_ha / ms_obj;
+    const vacas_180 = dias_vaca / 180;
+
+    // Mostrar resultados
+    results[0].innerText = ms_consumida.toFixed(2);
+    results[1].innerText = ms_faltante.toFixed(2);
+    results[2].innerText = costo_dieta.toFixed(2);
+    results[3].innerText = costo_litro.toFixed(2);
+    results[4].innerText = vacas_180.toFixed(1);
+  }
+}
+
+// ===============================
+window.onload = cargarForrajesBase;
+</script>
+
+</body>
+</html>
