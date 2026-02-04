@@ -1,0 +1,149 @@
+# Manual de Usuario  
+## Planilla de Evaluación Económica de Voluminosos en Vacas Lecheras
+
+---
+
+## 1. ¿Para qué sirve esta planilla?
+
+Esta herramienta permite **comparar diferentes voluminosos** (pastos, silajes, caña, etc.) según:
+
+- Costo diario de la dieta
+- Costo por litro de leche
+- Eficiencia de uso del suelo (vacas por hectárea)
+
+Su objetivo es ayudar a **tomar decisiones económicas** sobre qué forraje conviene utilizar en un sistema lechero determinado.
+
+---
+
+## 2. ¿Qué necesita antes de empezar?
+
+Solo necesita:
+
+- Un computador o celular con navegador web
+- El archivo `planilla_alimentacion.html`
+- Información básica de su sistema productivo:
+  - Producción diaria de leche por vaca
+  - Consumo estimado de materia seca
+  - Precios de forrajes y ración
+
+No requiere internet ni instalación.
+
+---
+
+## 3. Paso a paso de uso
+
+### Paso 1. Abrir la planilla
+
+Abra el archivo `planilla_alimentacion.html` haciendo doble clic o arrastrándolo a un navegador (Chrome, Edge, Firefox).
+
+---
+
+### Paso 2. Ajustar los parámetros generales
+
+En la parte superior de la planilla encontrará:
+
+- **Producción de leche (L/día)**  
+  → Ingrese el promedio diario por vaca.
+
+- **Consumo objetivo de MS (kg/día)**  
+  → Valor típico: 2,5–3,0 % del peso vivo.
+
+- **Precio de la ración ($/kg)**  
+  → Use el precio real del concentrado que compra.
+
+---
+
+### Paso 3. Revisar o modificar los voluminosos
+
+Para cada voluminoso puede cambiar:
+
+- Kg fresco ofrecido por día  
+- Porcentaje de materia seca (% MS)  
+- Precio por kg fresco  
+- Producción anual por hectárea  
+
+Los valores iniciales son **referenciales** y deben ajustarse a su realidad.
+
+---
+
+### Paso 4. Calcular
+
+Presione el botón **“Calcular”**.
+
+La planilla mostrará automáticamente los resultados para cada voluminoso.
+
+---
+
+## 4. Cómo interpretar los resultados
+
+### MS consumida
+Cantidad de materia seca que aporta el voluminoso.
+
+### Kg de ración
+Cuánta ración se necesita para completar el consumo diario.
+
+### Costo dieta/día
+Costo total de alimentar una vaca durante un día.
+
+### $/L
+Costo de alimentación por litro de leche producido.
+
+👉 **Este es el principal indicador económico.**
+
+### Vacas/180 días/ha
+Número de vacas que puede sostener una hectárea durante 180 días.
+
+👉 **Indica eficiencia de uso del suelo.**
+
+---
+
+## 5. ¿Cómo tomar decisiones con esta información?
+
+- Si su objetivo es **reducir costo por litro** → priorice el voluminoso con menor $/L  
+- Si su limitante es **disponibilidad de tierra** → priorice más vacas/ha  
+- Si busca **seguridad forrajera** → evalúe voluminosos más estables aunque sean más costosos
+
+No siempre el forraje más barato es el más eficiente.
+
+---
+
+## 6. Recomendaciones importantes
+
+- Compare siempre voluminosos **bajo la misma producción de leche**
+- Use datos reales de su finca cuando sea posible
+- No interprete esta planilla como un modelo nutricional completo
+- Use la herramienta como **apoyo a la decisión**, no como receta fija
+
+---
+
+## 7. Limitaciones del modelo
+
+La planilla **no considera**:
+
+- Digestibilidad del forraje
+- Fibra efectiva (FDN)
+- Cambios reales en producción de leche
+- Salud ruminal o reproductiva
+
+Para decisiones nutricionales finas, consulte a un profesional.
+
+---
+
+## 8. ¿Cuándo es especialmente útil esta planilla?
+
+- Planeación de siembras forrajeras  
+- Comparación entre silaje y pastoreo  
+- Clases y talleres de extensión  
+- Evaluación de impacto del precio de la ración  
+
+---
+
+## 9. Contacto y uso académico
+
+Esta herramienta es de **uso libre con fines educativos y técnicos**.  
+Si la utiliza en clases o materiales formales, se recomienda citar la fuente.
+
+---
+
+**Mensaje final:**  
+> *Un buen forraje no es el que parece más barato, sino el que alimenta mejor al sistema completo.*
